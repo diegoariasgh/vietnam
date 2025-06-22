@@ -1,0 +1,14 @@
+<header class="site-header">
+  <nav>
+    <a class="logo" href="{{ "/" | relative_url }}">{{ site.title }}</a>
+    <ul class="nav-list">
+      <li><a href="{{ "/" | relative_url }}">Home</a></li>
+      {% assign cities = site.pages 
+           | where_exp:"p","p.layout == 'city'" 
+           | sort: "order" %}
+      {% for page in cities %}
+        <li><a href="{{ page.url | relative_url }}">{{ page.title }}</a></li>
+      {% endfor %}
+    </ul>
+  </nav>
+</header>
